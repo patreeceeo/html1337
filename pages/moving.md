@@ -8,9 +8,20 @@ To do that, we'll need to keep track of where we are, and how fast we're going. 
 
 ```CSS
 .entity {
+    /* Basic attributes */
     background: red;
     height: 20px;
     width: 20px;
+    /* Contrast with bg */
+    color: black;
+
+    /* Center the face */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(90deg);
+
+    /* Set position */
     position: absolute;
     --x: 0;
     --y: 0;
@@ -33,9 +44,20 @@ To do that, we'll need to keep track of where we are, and how fast we're going. 
 
 <style>
 .entity {
+    /* Basic attributes */
     background: red;
     height: 20px;
     width: 20px;
+    /* Contrast with bg */
+    color: black;
+
+    /* Center the face */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(90deg);
+
+    /* Set position */
     position: absolute;
     --x: 0;
     --y: 0;
@@ -55,6 +77,6 @@ To do that, we'll need to keep track of where we are, and how fast we're going. 
     --velocity-x: 1px;
 }
 </style>
-<div class="entity"></div>
+<div class="entity">:)</div>
 
 Now use WASD keys to move our little dude. Look at 'em go!
