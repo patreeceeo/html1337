@@ -20,7 +20,7 @@ mkdir -p "${OUTPUT_DIR}"
 
 # Start server in background
 echo "Starting server..."
-PORT=$PORT BASE_URL="${BASE_URL}" node src/serve.js
+PORT=$PORT BASE_URL="${BASE_URL}" node src/serve.js &
 
 # Wait for server to be ready
 echo "Waiting for server to start..."
