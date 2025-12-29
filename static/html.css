@@ -131,6 +131,7 @@ body {
   font-family: system-ui;
 }
 
+footer,
 h1,
 h2,
 h3,
@@ -162,6 +163,7 @@ h3 {
   font-size: 150%;
 }
 
+footer,
 pre {
   background-color: rgba(0, 0, 0, 0.2);
 }
