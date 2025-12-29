@@ -81,4 +81,10 @@ To do that, we'll need to keep track of where we are, and how fast we're going. 
 
 Now use WASD keys to move our little dude. Look at 'em go!
 
-One really cool thing about this is how it gracefully handles edge cases. Try pressing keys corresponding to orthogonal directions, like "w" and "d". Or keys corresponding to opposite directions, like "w" and "s". Quite sensible, mostly. The only not so sensible part I can see is in the second case. If you're moving in a positive x or y direction and then you also press the key for the negative direction, nothing happens, but in the reverse case, you start heading in the new direction. For example: Press and hold "s" and then also press "w". Then press and hold "s" and then also press "w". This isn't a necessarily a terrible defect, as it's probably not a show stopper for most games, but it's a result of how CSS works that we should be mindful of in our adventure.
+One really cool thing about this is how it gracefully handles edge cases. Try pressing keys corresponding to orthogonal directions, like "w" and "d". Or keys corresponding to opposite directions, like "w" and "s". Quite sensible, mostly.
+
+The only not so sensible part I can see is in the second case. If you're moving in a positive x or y direction and then you also press the key for the negative direction, nothing happens, but in the reverse case, you start heading in the new direction. For example: Press and hold "s" and then also press "w". Then press and hold "s" and then also press "w".
+
+This is a result of how CSS works. We put the rules about moving down and right after the rules about moving up and left, and later rules take precedence.
+
+This isn't a necessarily a terrible defect, as it's probably not a show stopper for most games, but something to be mindful of in our adventure.
