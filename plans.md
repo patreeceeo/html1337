@@ -1,3 +1,5 @@
+# Different kinds of entities can be created by using different css classes
+
 # A generic way to map css variable name/value pairs to JS functions
 
 This will facilitate:
@@ -10,5 +12,6 @@ This will facilitate:
 - collision handling
   - input css variable: collision-mask => detect collisions with matching entities
   - add css class to colliding entities
-- frame management
+- camera/frame management
   - input css variable: how to handle when an entity leaves the frame element bounds
+  - input css variables: camera/frame position, zoom, rotation
