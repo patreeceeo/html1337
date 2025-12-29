@@ -146,7 +146,7 @@ h2,
 h3,
 h4,
 h5 {
-  color: mediumvioletred;
+  color: deeppink;
   font-weight: bold;
 }
 
@@ -164,4 +164,9 @@ h3 {
 
 pre {
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+a {
+  color: inherit;
+  text-decoration-color: deeppink;
 }
