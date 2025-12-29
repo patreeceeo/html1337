@@ -124,7 +124,7 @@ table {
 body {
   text-rendering: optimizeLegibility;
   background-color: darkblue;
-  max-width: 40rem;
+  max-width: 60rem;
   margin: 0 auto;
   color: aqua;
   line-height: 1.5;
@@ -137,7 +137,8 @@ h3,
 h4,
 h5,
 p {
-  margin: 1rem;
+  margin: 1rem 0rem;
+  padding: 0 7rem;
 }
 
 h1,
