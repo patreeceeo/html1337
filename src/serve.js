@@ -10,15 +10,26 @@ app.listen(process.env.PORT, () => {
   console.log(`serving`);
 });
 
+/**
+ * @param {string} template
+ * @param {Record<string, string>}
+ * @returns string
+ */
+const renderTemplate = (template, data) => {
+  let result = template;
+  for (const [key, value] of Object.entries(data)) {
+    result = result.replace(RegExp(`\\$\\{${key}\\}`, "g"), value);
+  }
+  return result;
+};
+
 const renderPage = (filePath) => {
   const contents = fs.readFileSync(filePath).toString();
-  const mainHtml = marked.parse(contents);
+  const main = marked.parse(contents);
   const layoutHtmlTemplate = fs
     .readFileSync("./templates/layout.html")
     .toString();
-  return layoutHtmlTemplate
-    .replace("${main}", mainHtml)
-    .replace("${basePath}", basePath);
+  return renderTemplate(layoutHtmlTemplate, { main, basePath });
 };
 
 app.get(`${basePath}`, (_, res) => {
