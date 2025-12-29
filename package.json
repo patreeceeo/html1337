@@ -1,8 +1,10 @@
 {
   "name": "zero_js_web_game_engine",
+  "type": "module",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "dev": "find . -name \"*.js\" | entr -r node src/serve.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky"
   },

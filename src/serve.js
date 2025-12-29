@@ -1,0 +1,27 @@
+import express from "express";
+import { marked } from "marked";
+import fs from "fs";
+
+const app = express();
+
+app.listen(1337, () => {
+  console.log(`serving`);
+});
+
+const renderPage = (filePath) => {
+  const contents = fs.readFileSync(filePath).toString();
+  const mainHtml = marked.parse(contents);
+  const layoutHtmlTemplate = fs
+    .readFileSync("./templates/layout.html")
+    .toString();
+  return layoutHtmlTemplate.replace("${main}", mainHtml);
+};
+
+app.get("/", (_, res) => {
+  res.send(renderPage("./pages/intro.md"));
+});
+
+app.get("/static/:resource", (req, res) => {
+  res.type("text/css");
+  res.send(fs.readFileSync(`static/${req.params.resource}`));
+});
