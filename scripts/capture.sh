@@ -1,0 +1,57 @@
+#!/bin/sh
+
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+PROJECT_ROOT=$(dirname "$SCRIPT_DIR")
+OUTPUT_DIR="${PROJECT_ROOT}/snapshot"
+PORT=1337
+BASE_URL="/html1337/"
+
+# Clean up background process on exit
+cleanup() {
+  kill -9 $(lsof -i :$PORT -Fp | sed -E 's/.([0-9]+)/\1/')
+}
+
+trap cleanup EXIT INT TERM
+
+rm -rf "${OUTPUT_DIR}"
+
+# Create output directory if it doesn't exist
+mkdir -p "${OUTPUT_DIR}"
+
+# Start server in background
+echo "Starting server..."
+PORT=$PORT BASE_URL="${BASE_URL}" node src/serve.js
+
+# Wait for server to be ready
+echo "Waiting for server to start..."
+max_wait=30
+waited=0
+while [ $waited -lt $max_wait ]; do
+  if curl -s "http://localhost:${PORT}" > /dev/null 2>&1; then
+    echo "Server is ready!"
+    break
+  fi
+  sleep 1
+  waited=$((waited + 1))
+done
+
+if [ $waited -eq $max_wait ]; then
+  echo "Error: Server did not start within ${max_wait} seconds"
+  exit 1
+fi
+
+wget \
+  --mirror \
+  --page-requisites \
+  --no-parent \
+  --no-host-directories \
+  --domains=localhost \
+  --cut-dirs=1 \
+  --directory-prefix="${OUTPUT_DIR}" \
+  --quiet \
+  --show-progress \
+  http://localhost:${PORT}${BASE_URL}
+
+echo "Snapshot captured to ${OUTPUT_DIR}"
+ls -lR $OUTPUT_DIR
+

@@ -4,7 +4,9 @@ import fs from "fs";
 
 const app = express();
 
-app.listen(1337, () => {
+const basePath = process.env.BASE_URL ?? "/";
+
+app.listen(process.env.PORT, () => {
   console.log(`serving`);
 });
 
@@ -14,14 +16,16 @@ const renderPage = (filePath) => {
   const layoutHtmlTemplate = fs
     .readFileSync("./templates/layout.html")
     .toString();
-  return layoutHtmlTemplate.replace("${main}", mainHtml);
+  return layoutHtmlTemplate
+    .replace("${main}", mainHtml)
+    .replace("${basePath}", basePath);
 };
 
-app.get("/", (_, res) => {
+app.get(`${basePath}`, (_, res) => {
   res.send(renderPage("./pages/intro.md"));
 });
 
-app.get("/static/:resource", (req, res) => {
+app.get(`${basePath}static/:resource`, (req, res) => {
   res.type("text/css");
   res.send(fs.readFileSync(`static/${req.params.resource}`));
 });
