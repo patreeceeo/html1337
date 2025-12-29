@@ -1,8 +1,11 @@
 # Different kinds of entities can be created by using different css classes
 
-# A generic way to map css selectors to JS functions
+# Some generic functions
 
-This will facilitate:
+- Map css selectors to JS functions
+- Evaluate various kinds of CSS expressions e.g. `calc(1px + 1px)` => '2px'
+
+These will facilitate:
 
 - updating css variables self-referentially
   - elements with a velocity css class have velocity/position css variables. Update their position variables on each frame.
