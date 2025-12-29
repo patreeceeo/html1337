@@ -1,0 +1,20 @@
+{
+  "name": "zero_js_web_game_engine",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.2.1",
+    "marked": "^17.0.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "prettier": "3.7.4",
+    "typescript": "^5.9.3"
+  }
+}
