@@ -49,10 +49,6 @@ app.get(`${basePath}`, (_, res) => {
   res.send(renderPage("./pages/intro.md"));
 });
 
-app.get(`${basePath}more`, (_, res) => {
-  res.send(renderPage("./pages/more.md"));
-});
-
 const mimeTypeByExt = {
   css: "text/css",
   js: "text/JavaScript",
@@ -71,4 +67,8 @@ app.get(`${basePath}static/:resource`, (req, res) => {
   const path = req.params.resource;
   res.type(getMimeType(path));
   res.send(fs.readFileSync(`static/${path}`));
+});
+
+app.get(`${basePath}:page`, (req, res) => {
+  res.send(renderPage(`./pages/${req.params.page}.md`));
 });

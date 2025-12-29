@@ -22,3 +22,5 @@ Someone once said [games are a series of interesting decisions](https://www.game
 
 And with any luck, we should see the background color of this page change when we hold down (case sensitive) "w", "i" and "n" on the keyboard. Wow! Perhaps not the most interesting game, but it's a start!
 <output></output>
+
+Next, [we'll really get moving](moving)!
