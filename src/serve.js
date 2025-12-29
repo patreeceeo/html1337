@@ -53,7 +53,22 @@ app.get(`${basePath}more`, (_, res) => {
   res.send(renderPage("./pages/more.md"));
 });
 
+const mimeTypeByExt = {
+  css: "text/css",
+  js: "text/JavaScript",
+};
+
+/**
+ * @param {string} path
+ * @returns string
+ */
+function getMimeType(path) {
+  const [_, ext] = path.split(".");
+  return mimeTypeByExt[ext] ?? "text/text";
+}
+
 app.get(`${basePath}static/:resource`, (req, res) => {
-  res.type("text/css");
-  res.send(fs.readFileSync(`static/${req.params.resource}`));
+  const path = req.params.resource;
+  res.type(getMimeType(path));
+  res.send(fs.readFileSync(`static/${path}`));
 });
