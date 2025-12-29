@@ -138,7 +138,7 @@ h4,
 h5,
 p,
 pre {
-  padding: 1rem 7rem;
+  padding: 1rem 10vw;
 }
 
 h1,
@@ -170,4 +170,8 @@ pre {
 a {
   color: inherit;
   text-decoration-color: deeppink;
+}
+
+pre {
+  white-space: pre-wrap;
 }
