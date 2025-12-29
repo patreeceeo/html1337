@@ -20,5 +20,5 @@ Someone once said [games are a series of interesting decisions](https://www.game
 }
 </style>
 
-And with any luck, we should see the background color of this page change when we press "w" on the keyboard. Wow! Not the most interesting decision, but it's a start!
+And with any luck, we should see the background color of this page change when we press "w" on the keyboard. Wow! Perhaps not the most interesting game, but it's a start!
 <output></output>
