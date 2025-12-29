@@ -25,6 +25,10 @@ app.get(`${basePath}`, (_, res) => {
   res.send(renderPage("./pages/intro.md"));
 });
 
+app.get(`${basePath}more`, (_, res) => {
+  res.send(renderPage("./pages/more.md"));
+});
+
 app.get(`${basePath}static/:resource`, (req, res) => {
   res.type("text/css");
   res.send(fs.readFileSync(`static/${req.params.resource}`));

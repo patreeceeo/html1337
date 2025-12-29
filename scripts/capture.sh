@@ -48,9 +48,14 @@ wget \
   --domains=localhost \
   --cut-dirs=1 \
   --directory-prefix="${OUTPUT_DIR}" \
+  --adjust-extension \
   --quiet \
   --show-progress \
   http://localhost:${PORT}${BASE_URL}
+
+# Restructure HTML files to directory/index.html format
+echo "Restructuring files..."
+cd "${OUTPUT_DIR}" && node "${SCRIPT_DIR}/restructure-files.js" '^(?!index\.html$)(.+)\.html$' '$1/index.html'
 
 echo "Snapshot captured to ${OUTPUT_DIR}"
 ls -lR $OUTPUT_DIR
