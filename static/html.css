@@ -136,9 +136,9 @@ h2,
 h3,
 h4,
 h5,
-p {
-  margin: 1rem 0rem;
-  padding: 0 7rem;
+p,
+pre {
+  padding: 1rem 7rem;
 }
 
 h1,
@@ -160,4 +160,8 @@ h2 {
 
 h3 {
   font-size: 150%;
+}
+
+pre {
+  background-color: rgba(0, 0, 0, 0.2);
 }
