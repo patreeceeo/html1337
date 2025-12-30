@@ -11,6 +11,8 @@ To do that, we'll need to keep track of where we are, and how fast we're going. 
 .entity {
     /* Set position */
     position: absolute;
+    top: 0;
+    left: 0;
     --x: 0;
     --y: 0;
     transform: translate(var(--x), var(--y)) rotate(90deg);
@@ -49,6 +51,8 @@ To do that, we'll need to keep track of where we are, and how fast we're going. 
 
     /* Set position */
     position: absolute;
+    top: 0;
+    left: 0;
     --x: 0;
     --y: 0;
     transform: translate(var(--x), var(--y)) rotate(90deg);
