@@ -13,8 +13,7 @@ To do that, we'll need to keep track of where we are, and how fast we're going. 
     position: absolute;
     --x: 0;
     --y: 0;
-    top: var(--y);
-    left: var(--x);
+    transform: translate(var(--x), var(--y)) rotate(90deg);
 
     /* ...Other less important rules */
 }
@@ -47,14 +46,12 @@ To do that, we'll need to keep track of where we are, and how fast we're going. 
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: rotate(90deg);
 
     /* Set position */
     position: absolute;
     --x: 0;
     --y: 0;
-    top: var(--y);
-    left: var(--x);
+    transform: translate(var(--x), var(--y)) rotate(90deg);
     --speed: 1px;
 }
 .key-w-pressed .entity {
