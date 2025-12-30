@@ -126,7 +126,7 @@ body {
   background-color: var(--background-color);
   max-width: 75rem;
   margin: 0 auto;
-  color: aqua;
+  color: var(--text-color);
   line-height: 1.5;
   font-family: system-ui;
 }
@@ -175,8 +175,20 @@ pre {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+button[popovertarget] {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  display: inline;
+
+  cursor: help;
+}
+button[popovertarget],
 a {
   color: inherit;
+  text-decoration: underline;
   text-decoration-color: var(--accent-color);
   text-decoration-thickness: 2px;
   text-decoration-skip-ink: none;
@@ -187,6 +199,15 @@ a {
     outline-offset: 4px;
     text-decoration: none;
   }
+}
+
+div[popover] {
+  margin: auto auto;
+  outline: 2px solid var(--accent-color);
+  padding: 1rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  box-shadow: 1rem 1rem rgba(0, 0, 0, 0.8);
 }
 
 pre {
