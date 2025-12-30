@@ -1,3 +1,4 @@
+const body = document.body;
 /**
  * @typedef {Object} Plugin
  * @property {string} name
@@ -79,13 +80,13 @@ addEventListener("submit", submit);
  * @param {KeyboardEvent} evt
  */
 function keydown(evt) {
-  document.body.classList.add(`key-${evt.key}-pressed`);
+  body.classList.add(`key-${evt.key}-pressed`);
 }
 /**
  * @param {KeyboardEvent} evt
  */
 function keyup(evt) {
-  document.body.classList.remove(`key-${evt.key}-pressed`);
+  body.classList.remove(`key-${evt.key}-pressed`);
 }
 
 /**
@@ -101,8 +102,8 @@ function submit(evt) {
 
 const dummy = document.createElement("div");
 function DOMContentLoaded() {
-  document.body.append(dummy);
-  dummy.style.width = "0";
+  body.append(dummy);
+  dummy.style.position = "absolute";
 
   for (const plugin of PLUGINS) {
     if (plugin.init) {
