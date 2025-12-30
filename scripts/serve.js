@@ -9,7 +9,9 @@ const app = express();
 const basePath = process.env.BASE_URL ?? "/";
 
 app.listen(process.env.PORT, () => {
-  console.log(`serving`);
+  console.log(
+    `serving on http://localhost:${process.env.PORT}${process.env.BASE_URL}`,
+  );
 });
 
 /**
