@@ -9,25 +9,14 @@ To do that, we'll need to keep track of where we are, and how fast we're going. 
 ```HTML
 <style>
 .entity {
-    /* Basic attributes */
-    background: red;
-    height: 20px;
-    width: 20px;
-    /* Contrast with bg */
-    color: black;
-
-    /* Center the face */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: rotate(90deg);
-
     /* Set position */
     position: absolute;
     --x: 0;
     --y: 0;
     top: var(--y);
     left: var(--x);
+
+    /* ...Other less important rules */
 }
 .key-w-pressed .entity {
     --velocity-y: -1px;
@@ -58,14 +47,14 @@ To do that, we'll need to keep track of where we are, and how fast we're going. 
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: rotate(90deg);
 
     /* Set position */
     position: absolute;
-    top: 0;
-    left: 0;
     --x: 0;
     --y: 0;
-    transform: translate(var(--x), var(--y)) rotate(90deg);
+    top: var(--y);
+    left: var(--x);
 }
 .key-w-pressed .entity {
     --velocity-y: -1px;
