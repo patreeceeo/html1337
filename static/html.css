@@ -177,6 +177,9 @@ pre {
 a {
   color: inherit;
   text-decoration-color: deeppink;
+  text-decoration-thickness: 2px;
+  text-decoration-skip-ink: none;
+  text-decoration-style: wavy;
 }
 
 pre {
