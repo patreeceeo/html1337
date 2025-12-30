@@ -81,6 +81,8 @@ To do that, we'll need to keep track of where we are, and how fast we're going. 
 
 Now use WASD keys to move our little dude. Look at 'em go!
 
+## Pause to reflect on how far we have already come
+
 One really cool thing about this is how it sensibly handles edge cases. Try pressing keys corresponding to orthogonal directions, like "w" and "d". Or keys corresponding to opposite directions, like "w" and "s". Quite sensible, mostly.
 
 The only not so sensible part I can see is in the second case. If you're moving in a positive x or y direction and then you also press the key for the negative direction, nothing happens, but in the reverse case, you start heading in the new direction. For example: Press and hold "w" and then also press "s". Then press and hold "s" and then also press "w".
