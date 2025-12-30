@@ -137,7 +137,8 @@ h3,
 h4,
 h5,
 p,
-pre {
+pre,
+form {
   padding: 1rem 10vw;
 }
 

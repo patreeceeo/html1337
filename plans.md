@@ -1,5 +1,7 @@
 # Different kinds of entities can be created by using different css classes
 
+# Plugin system
+
 # Some generic functions
 
 - Map css selectors to JS functions

@@ -55,18 +55,19 @@ To do that, we'll need to keep track of where we are, and how fast we're going. 
     --y: 0;
     top: var(--y);
     left: var(--x);
+    --speed: 1px;
 }
 .key-w-pressed .entity {
-    --velocity-y: -1px;
+    --velocity-y: calc(-1 * var(--speed) );
 }
 .key-a-pressed .entity {
-    --velocity-x: -1px;
+    --velocity-x: calc(-1 * var(--speed) );
 }
 .key-s-pressed .entity {
-    --velocity-y: 1px;
+    --velocity-y: calc(1 * var(--speed) );
 }
 .key-d-pressed .entity {
-    --velocity-x: 1px;
+    --velocity-x: calc(1 * var(--speed) );
 }
 </style>
 <div class="entity">:)</div>
@@ -84,3 +85,23 @@ The only not so sensible part I can see is in the second case. If you're moving 
 This is a result of how CSS works. We put the rules about moving down and right after the rules about moving up and left, and later rules take precedence.
 
 This isn't a necessarily a terrible defect, as it's probably not a show stopper for most games, but something to be mindful of in our adventure.
+
+## One more thing&hellip;
+
+If we add another CSS variable for the speed instead of using a hard-coded "1px", we can add a lil widget that allows us to fine-tune our lil dude's speed.
+
+<form data-target-selector=".entity" data-units='{"--speed":"px"}'>
+    <label>--speed: <input name="--speed" type="number"/>px</label>
+    <input type="submit" value="Set Velocity"/>
+</form>
+
+I wrote some JavaScript that let's us create such widgets with pure HTML:
+
+```html
+<form data-target-selector=".entity" data-units='{"--speed":"px"}'>
+  <label>--speed: <input name="--speed" type="number" />px</label>
+  <input type="submit" value="Set Velocity" />
+</form>
+```
+
+Convenient, eh?
