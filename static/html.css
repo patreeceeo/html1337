@@ -123,7 +123,7 @@ table {
 
 body {
   text-rendering: optimizeLegibility;
-  background-color: darkblue;
+  background-color: var(--background-color);
   max-width: 75rem;
   margin: 0 auto;
   color: aqua;
@@ -148,7 +148,7 @@ h4,
 h5,
 h6 {
   font-family: "UnifrakturMaguntia", cursive;
-  color: deeppink;
+  color: var(--accent-color);
   font-weight: 400;
   line-height: 1;
 }
@@ -176,10 +176,16 @@ pre {
 
 a {
   color: inherit;
-  text-decoration-color: deeppink;
+  text-decoration-color: var(--accent-color);
   text-decoration-thickness: 2px;
   text-decoration-skip-ink: none;
   text-decoration-style: wavy;
+
+  &:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+    text-decoration: none;
+  }
 }
 
 pre {

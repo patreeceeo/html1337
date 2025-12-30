@@ -4,6 +4,13 @@ So you want to make games and put them online? You can either A.) Use a game eng
 
 Or C.) Just use HTML and CSS? Perhaps by the end of this blog series, that will actually be possible!
 
+What's that? <span class="Doot">
+<a href="javascript:void 0">Why are you giving me that look?</a>
+<span class="Doot_popup">
+<a href="https://media.ccc.de/v/39c3-css-clicker-training-making-games-in-a-styling-language#t=2391">You think HTML and CSS are not programming languages??</a>
+</span>
+</span>
+
 ## First steps
 
 Someone once said [games are a series of interesting decisions](https://www.gamedeveloper.com/design/gdc-2012-sid-meier-on-how-to-see-games-as-sets-of-interesting-decisions). In order for there to be any of that, we'll need a way to get input from the player. But don't worry, I'll write the JavaScript for you, and let you know what the player did via CSS. That way, you can write CSS like:
