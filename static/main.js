@@ -22,7 +22,7 @@ function DOMContentLoaded() {
 }
 
 const fixedTimeStep = 1 / 100;
-const maxAccumulator = 1000;
+const maxAccumulator = 2;
 let lastTime = performance.now();
 let accumulator = 0;
 /**
@@ -59,7 +59,7 @@ function update() {
 function applyVelocity(ent, dim) {
   const style = getComputedStyle(ent);
   const velocity = style.getPropertyValue(`--velocity-${dim}`);
-  if (!velocity) return;
+  if (velocity === "") return;
   const postion = style.getPropertyValue(`--${dim}`);
   dummy.style.width = `calc(${postion} + ${velocity})`;
   ent.style.setProperty(`--${dim}`, dummy.style.width);
