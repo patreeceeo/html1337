@@ -22,6 +22,8 @@ Someone once said [games are a series of interesting decisions](https://www.game
 
 Now hold down "w", "i" and "n" on the keyboard and, with any luck, we'll see the background color of this page change. Wow! By the way, you can press them in any order! You might have a harder time if you decided to view this on a device without a keyboard, press the caps lock or shift key, disable JavaScript, etc.
 
-It's perhaps not the most interesting game, but it's a start!
+One cool thing about this approach compared to the standard JavaScript approach is that it's automatically quite [debuggable](https://en.wikipedia.org/wiki/Debugging) without needing to modify the code. Right click anywhere on the page and select "Inspect" to open your browser's developer tools, then click back on the page itself to restore focus. You should now be able to see stuff changing as you press keys. Trying playing around with it. Correlating what's happening in the HTML element inspector with what's happening on the page itself can be quite elucidating.
+
+This is perhaps not the most interesting game, but it's a start!
 
 Next, [we'll really get moving](moving)!

@@ -86,7 +86,7 @@ Now use WASD keys to move our little dude. Look at 'em go!
 
 ## Pause to reflect on how far we have already come
 
-One cool thing about this approach compared to the standard JavaScript approach is that it's automatically quite debuggable as it is. Right click on our dude and select "Inspect" to open your browser's developer tools. You should now be able to see stuff changing as you move him. Correlating what's happening in the element inspector with what's happening on the page itself can be quite elucidating.
+Try inspecting our little dude by right clicking on him and selecting "Inspect." You should be able to see his CSS properties changing as you move him around. Reminder: If he's not moving, click back on the page itself to restore focus. Pretty neat!
 
 Another cool thing about this is how it sensibly handles edge cases. Try pressing keys corresponding to orthogonal directions, like "w" and "d". Or keys corresponding to opposite directions, like "w" and "s". Quite sensible, mostly.
 
