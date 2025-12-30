@@ -86,7 +86,7 @@ This is a result of how CSS works. We put the rules about moving down and right 
 
 This isn't a necessarily a terrible defect, as it's probably not a show stopper for most games, but something to be mindful of in our adventure.
 
-## One more thing&hellip;
+## Need for --speed
 
 If we add another CSS variable for the speed instead of using a hard-coded "1px", we can add a lil widget that allows us to fine-tune our lil dude's speed.
 
