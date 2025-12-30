@@ -6,7 +6,8 @@ What kind of game do you want to make? I want to make a game where you move arou
 
 To do that, we'll need to keep track of where we are, and how fast we're going. Let's make a little dude that can keep track of that for us:
 
-```CSS
+```HTML
+<style>
 .entity {
     /* Basic attributes */
     background: red;
@@ -40,6 +41,8 @@ To do that, we'll need to keep track of where we are, and how fast we're going. 
 .key-d-pressed .entity {
     --velocity-x: 1px;
 }
+</style>
+<div class="entity">:)</div>
 ```
 
 <style>
@@ -55,14 +58,14 @@ To do that, we'll need to keep track of where we are, and how fast we're going. 
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: rotate(90deg);
 
     /* Set position */
     position: absolute;
+    top: 0;
+    left: 0;
     --x: 0;
     --y: 0;
-    top: var(--y);
-    left: var(--x);
+    transform: translate(var(--x), var(--y)) rotate(90deg);
 }
 .key-w-pressed .entity {
     --velocity-y: -1px;
