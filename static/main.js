@@ -21,17 +21,35 @@ function DOMContentLoaded() {
   dummy.style.width = "0";
 }
 
-// TODO fixed time step
-const animationFrame = () => {
-  /** @type {HTMLElement[]} */
-  const entList = [...document.querySelectorAll(".entity")];
-  for (const ent of entList) {
-    applyVelocity(ent, "x");
-    applyVelocity(ent, "y");
+const fixedTimeStep = 1 / 100;
+const maxAccumulator = 1000;
+let lastTime = performance.now();
+let accumulator = 0;
+/**
+ * @param {number} time
+ */
+const animationFrame = (time) => {
+  const frameTime = Math.min((time - lastTime) / 1000, maxAccumulator);
+  lastTime = time;
+  accumulator += frameTime;
+  let stepCount = 0;
+  while (accumulator >= fixedTimeStep) {
+    update();
+    accumulator -= fixedTimeStep;
+    stepCount++;
   }
   requestAnimationFrame(animationFrame);
 };
 requestAnimationFrame(animationFrame);
+
+function update() {
+  /** @type {NodeListOf<HTMLElement>} */
+  const entList = document.querySelectorAll(".entity");
+  for (const ent of entList) {
+    applyVelocity(ent, "x");
+    applyVelocity(ent, "y");
+  }
+}
 
 /**
  * @param {HTMLElement} ent
