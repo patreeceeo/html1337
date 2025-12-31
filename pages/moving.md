@@ -32,7 +32,7 @@ To do that, we'll need to keep track of where we are, and how fast we're going. 
     --velocity-x: 1px;
 }
 </style>
-<div class="entity">:)</div>
+<div class="entity velocity">:)</div>
 ```
 
 <style>
@@ -71,9 +71,23 @@ To do that, we'll need to keep track of where we are, and how fast we're going. 
     --velocity-x: calc(1 * var(--speed) );
 }
 </style>
-<div class="entity">:)</div>
+<div class="entity velocity">:)</div>
 
-Now use WASD keys to move our little dude. Look at 'em go!
+Note the "velocity" class on the HTML tag. This tells the JavaScript to <button popovertarget="simulate">simulate</button> velocity using the --velocity-x and --velocity-y CSS variables. Now use WASD keys to move our little dude. Look at 'em go!
+
+<div id="simulate" popover>
+
+You might wonder why we can't just calculate the new positions like this:
+
+```css
+.key-w-pressed .entity {
+  --y: calc(var(--y) - 1px);
+}
+```
+
+The reason is that CSS variable assignments are really more like find and replace operations than imperative assignments, so self-referential assignments are considered invalid.
+
+</div>
 
 ## Pause to reflect on how far we have already come
 

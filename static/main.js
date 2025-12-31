@@ -1,11 +1,14 @@
 const body = document.body;
 /**
+ * @typedef {(els: NodeListOf<HTMLElement>) => void} SelectorFrameHandler
+ *
  * @typedef {Object} Plugin
  * @property {string} name
  * @property {() => void} [init]
  * @property {(evt: SubmitEvent) => void} [onSubmit]
  * @property {(evt: KeyboardEvent) => void} [onKeydown]
  * @property {(evt: KeyboardEvent) => void} [onKeyUp]
+ * @property {Record<string, SelectorFrameHandler>} [onFrame]
  */
 
 /** @type {Plugin[]} */
@@ -17,6 +20,17 @@ const PLUGINS = [
     },
     onKeyUp: (evt) => {
       body.classList.remove(`key-${evt.key}-pressed`);
+    },
+  },
+  {
+    name: "Velocity System",
+    onFrame: {
+      ".velocity": (els) => {
+        for (const el of els) {
+          applyVelocity(el, "x");
+          applyVelocity(el, "y");
+        }
+      },
     },
   },
   {
@@ -150,12 +164,29 @@ const animationFrame = (time) => {
 requestAnimationFrame(animationFrame);
 
 function update() {
-  /** @type {NodeListOf<HTMLElement>} */
-  const entList = document.querySelectorAll(".entity");
-  for (const ent of entList) {
-    applyVelocity(ent, "x");
-    applyVelocity(ent, "y");
+  for (const plugin of PLUGINS) {
+    if (plugin.onFrame) {
+      for (const selector in plugin.onFrame) {
+        const handler = plugin.onFrame[selector];
+        /** @type {NodeListOf<HTMLElement>} */
+        const els = document.querySelectorAll(selector);
+        if (els.length > 0) {
+          handler(els);
+        }
+      }
+    }
   }
+}
+
+/**
+ * @param {string} value
+ * @returns {string}
+ */
+function evaluateCssLength(value) {
+  dummy.style.width = `calc(${value})`;
+  const computed = dummy.style.width;
+  dummy.style.width = "0";
+  return computed;
 }
 
 /**
@@ -168,7 +199,6 @@ function applyVelocity(ent, dim) {
   const velocity = style.getPropertyValue(`--velocity-${dim}`);
   if (velocity === "") return;
   const postion = style.getPropertyValue(`--${dim}`);
-  dummy.style.width = `calc(${postion} + ${velocity})`;
-  ent.style.setProperty(`--${dim}`, dummy.style.width);
-  dummy.style.width = "0";
+  const newPos = evaluateCssLength(`${postion} + ${velocity}`);
+  ent.style.setProperty(`--${dim}`, newPos);
 }
