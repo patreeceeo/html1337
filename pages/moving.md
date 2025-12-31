@@ -85,7 +85,7 @@ You might wonder why we can't just calculate the new positions like this:
 }
 ```
 
-The reason is that CSS variable assignments are really more like find and replace operations than imperative assignments, so self-referential assignments are considered invalid.
+The reason is that variables in CSS work more like find and replace operations than variables in most other languages, so self-referential variable assignments are considered invalid.
 
 </div>
 
