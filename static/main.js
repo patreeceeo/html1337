@@ -1,4 +1,10 @@
 const body = document.body;
+
+const CONFIG = {
+  fixedTimeStep: 1 / 100,
+  maxAccumulator: 2,
+};
+
 /**
  * @typedef {(els: NodeListOf<HTMLElement>) => void} SelectorFrameHandler
  *
@@ -144,20 +150,18 @@ function DOMContentLoaded() {
   }
 }
 
-const fixedTimeStep = 1 / 100;
-const maxAccumulator = 2;
 let lastTime = performance.now();
 let accumulator = 0;
 /**
  * @param {number} time
  */
 const animationFrame = (time) => {
-  const frameTime = Math.min((time - lastTime) / 1000, maxAccumulator);
+  const frameTime = Math.min((time - lastTime) / 1000, CONFIG.maxAccumulator);
   lastTime = time;
   accumulator += frameTime;
-  while (accumulator >= fixedTimeStep) {
+  while (accumulator >= CONFIG.fixedTimeStep) {
     update();
-    accumulator -= fixedTimeStep;
+    accumulator -= CONFIG.fixedTimeStep;
   }
   requestAnimationFrame(animationFrame);
 };
