@@ -4,11 +4,21 @@ const body = document.body;
  * @property {string} name
  * @property {() => void} [init]
  * @property {(evt: SubmitEvent) => void} [onSubmit]
+ * @property {(evt: KeyboardEvent) => void} [onKeydown]
+ * @property {(evt: KeyboardEvent) => void} [onKeyUp]
  */
 
 /** @type {Plugin[]} */
 const PLUGINS = [
-  // Add plugins here
+  {
+    name: "Keyboard Input",
+    onKeydown: (evt) => {
+      body.classList.add(`key-${evt.key}-pressed`);
+    },
+    onKeyUp: (evt) => {
+      body.classList.remove(`key-${evt.key}-pressed`);
+    },
+  },
   {
     name: "CSS Variable Forms",
     init: () => {
@@ -80,13 +90,21 @@ addEventListener("submit", submit);
  * @param {KeyboardEvent} evt
  */
 function keydown(evt) {
-  body.classList.add(`key-${evt.key}-pressed`);
+  for (const plugin of PLUGINS) {
+    if (plugin.onKeydown) {
+      plugin.onKeydown(evt);
+    }
+  }
 }
 /**
  * @param {KeyboardEvent} evt
  */
 function keyup(evt) {
-  body.classList.remove(`key-${evt.key}-pressed`);
+  for (const plugin of PLUGINS) {
+    if (plugin.onKeyUp) {
+      plugin.onKeyUp(evt);
+    }
+  }
 }
 
 /**
@@ -123,11 +141,9 @@ const animationFrame = (time) => {
   const frameTime = Math.min((time - lastTime) / 1000, maxAccumulator);
   lastTime = time;
   accumulator += frameTime;
-  let stepCount = 0;
   while (accumulator >= fixedTimeStep) {
     update();
     accumulator -= fixedTimeStep;
-    stepCount++;
   }
   requestAnimationFrame(animationFrame);
 };
