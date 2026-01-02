@@ -1,7 +1,7 @@
 const body = document.body;
 
 const CONFIG = {
-  fixedTimeStep: 1 / 100,
+  fixedTimeStep: 1 / 60,
   maxAccumulator: 2,
 };
 

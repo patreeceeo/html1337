@@ -15,7 +15,9 @@ To do that, we'll need to keep track of where we are, and how fast we're going. 
     left: 0;
     --x: 0;
     --y: 0;
-    transform: translate(var(--x), var(--y)) rotate(90deg);
+    translate: var(--x) var(--y);
+    /* an optimization */
+    will-change: translate;
 
     /* ...Other less important rules */
 }
@@ -49,13 +51,17 @@ To do that, we'll need to keep track of where we are, and how fast we're going. 
     justify-content: center;
     align-items: center;
 
+    /* turn that frown around */
+    transform: rotate(90deg);
+
     /* Set position */
     position: absolute;
     top: 0;
     left: 0;
     --x: 0;
     --y: 0;
-    transform: translate(var(--x), var(--y)) rotate(90deg);
+    translate: var(--x) var(--y);
+    will-change: translate;
     --speed: 1px;
 }
 .key-w-pressed .entity {
